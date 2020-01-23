@@ -2,9 +2,9 @@ public class Player {
 	private String name;
 	private int number;
 
-	Player(String inputName, int inputNumber) {
-		name = inputName;
-		number = inputNumber;
+	Player(String name, int number) {
+		this.name = name;
+		this.number = number;
 	}
 
 	public String getName() {
