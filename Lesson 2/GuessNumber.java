@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class GuessNumber {
 	private Scanner in = new Scanner(System.in);
 
-	public void Game() {
+	public void game() {
 		System.out.println("Загадайте целое число в диапазоне от 0 до 100:");
 		int hiddenNumber = inputNumber();
 
@@ -33,7 +33,7 @@ public class GuessNumber {
 				System.out.println("Игрок " + secondPlayer.getName() + " угадал число");
 				isPlay = false;
 			} else {
-		 		isPlay = YesNo();
+		 		isPlay = yesNo();
 			}
 		}
 	}
@@ -73,7 +73,7 @@ public class GuessNumber {
 		return inputString;
 	}
 
-	public boolean YesNo() {
+	public boolean yesNo() {
 		boolean isYesNo = true;
 		boolean isCycle = false;
 		String inputYesNo = "";
