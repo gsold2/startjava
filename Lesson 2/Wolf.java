@@ -2,9 +2,9 @@ public class Wolf {
 
 	private String sex;
 	private String name;
-	private float waight;
+	private float weight;
 	private int age;
-	private String collor;
+	private String color;
 
 	public String getSex() {
 		return sex;
@@ -22,12 +22,12 @@ public class Wolf {
 		this.name = name;
 	}
 
-	public float getWaight() {
-		return waight;
+	public float getWeight() {
+		return weight;
 	}
 
-	public void setWaight(float waight) {
-		this.waight = waight;
+	public void setWeight(float weight) {
+		this.weight = weight;
 	}
 
 	public int getAge() {
@@ -42,12 +42,12 @@ public class Wolf {
 		}
 	}
 
-	public String getCollor() {
-		return collor;
+	public String getColor() {
+		return color;
 	}
 
-	public void setCollor(String collor) {
-		this.collor = collor;
+	public void setColor(String color) {
+		this.color = color;
 	}
 
 	public void go() {
