@@ -1,28 +1,28 @@
 public class Calculator {
 
-	public void сalculator(int number1, char inputMathSymbole, int number2) {
-		switch(inputMathSymbole) {
-			case '+':
+	public void сalculate(int number1, String operator, int number2) {
+		switch(operator) {
+			case "+":
 				System.out.println(number1 + "+" + number2 + "=" + (number1 + number2));
 				break;
-			case '-':
+			case "-":
 				System.out.println(number1 + "-" + number2 +  "=" + (number1 - number2));
 				break;
-			case '*':
+			case "*":
 				System.out.println(number1 + "*" + number2 +  "=" + (number1 * number2));
 				break;
-			case '/':
+			case "/":
 				System.out.println(number1 + "/" + number2 +  "=" + (number1 / number2));
 				break;
-			case '%':
+			case "%":
 				System.out.println(number1 + "%" + number2 +  "=" + (number1 % number2));
 				break;
-			case '^':
+			case "^":
 				int exp = number1;
 				for (int i = 1; i < number2; i++) {
 					exp *= number1;
 				}
-				System.out.print(number1 + "^" + number2 + "=" + exp);
+				System.out.println(number1 + "^" + number2 + "=" + exp);
 				break;
 		}
 	}

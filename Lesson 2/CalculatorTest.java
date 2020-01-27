@@ -13,80 +13,48 @@ public class CalculatorTest {
 								"[Первое число]%[Второе число]" + "\n" +
 								"[Первое число]^[Второе число]"  + "\n");
 
-		boolean isCalculator = true;
+		String doNextCalculation = "да";
 		Calculator calc = new Calculator();
 
-		while(isCalculator) {
-			System.out.print("Введите [Первое число]:");
+		while(doNextCalculation.equals("да")) {
 			int number1 = inputNumber("Введите [Первое число]:");
 
-			System.out.print("Введите знак математической операции:");
-			boolean isInputMathSymbole = false;
-			char inputMathSymbole = 'x';
-			while(!isInputMathSymbole) {
-				while(!in.hasNextLine()) {
-					System.out.print("Введите знак математической операции:");
-					in.next();
-				}
-				inputMathSymbole = in.next().charAt(0);
+			String operator = "x";
+			do {
+				System.out.print("Введите знак математической операции:");
+				operator = in.next();
+			} while((!operator.equals("+")) & (!operator.equals("-")) &
+					(!operator.equals("*")) & (!operator.equals("/")) &
+					(!operator.equals("%")) & (!operator.equals("^"))
+					);
 
-				if((inputMathSymbole == '+') || (inputMathSymbole == '-'
-					) || (inputMathSymbole == '*') || (inputMathSymbole == '/'
-					) || (inputMathSymbole == '%')  || (inputMathSymbole == '^')) {
-					isInputMathSymbole = true;
-				} else {
-					System.out.print("Введите знак математической операции:");
-				}
-			}
-
-			System.out.print("Введите [Второе число]:");
 			int number2 = inputNumber("Введите [Второе число]:");
 
-			calc.сalculator(number1, inputMathSymbole, number2);
+			calc.сalculate(number1, operator, number2);
 
-			isCalculator = yesNo();
+			doNextCalculation = doNext();
 		}
 	}
 
 	public static int inputNumber(String inputString) {
-		int number = 0;
-		boolean isNumber = false;
-		while(!isNumber) {
-			while(!in.hasNextInt()) {
+		int number = -1;
+		do {
+			System.out.print(inputString);
+			while (!in.hasNextInt()) {
 				System.out.print(inputString);
 				in.next();
 			}
 			number = in.nextInt();
-
-			if(number > 0) {
-				isNumber = true;
-			} else {
-				System.out.print(inputString);
-			}
-		}
+		} while (number <= 0);
 		return number;
-	}
+}
 
-	public static boolean yesNo() {
-		boolean isYesNo = true;
-		boolean isCycle = false;
+	public static String doNext() {
 		String inputYesNo = "";
-		while(!isCycle) {
-			while(!in.hasNextLine()) {
-				System.out.print("Хотите продолжить? [да/нет]:");
-				in.nextLine();
-			}
-			inputYesNo = in.nextLine();
-			if(inputYesNo.equals("да")) {
-				isYesNo = true;
-				isCycle = true;
-			} else if(inputYesNo.equals("нет")){
-				isYesNo = false;
-				isCycle = true;
-			} else {
-				System.out.print("Хотите продолжить? [да/нет]:");
-			}
-		}
-		return isYesNo;
+		do {
+			System.out.print("Хотите продолжить? [да/нет]:");
+			inputYesNo = in.next();
+		} while((!inputYesNo.equals("да")) & (!inputYesNo.equals("нет")));
+		return inputYesNo;
 	}
 }
