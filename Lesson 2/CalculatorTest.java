@@ -47,7 +47,7 @@ public class CalculatorTest {
 			number = in.nextInt();
 		} while (number <= 0);
 		return number;
-}
+	}
 
 	public static String doNext() {
 		String inputYesNo = "";
