@@ -19,13 +19,13 @@ public class CalculatorTest {
 		while(doNextCalculation.equals("да")) {
 			int number1 = inputNumber("Введите [Первое число]:");
 
-			String operator = "x";
+			char operator = 'x';
 			do {
 				System.out.print("Введите знак математической операции:");
-				operator = in.next();
-			} while((!operator.equals("+")) & (!operator.equals("-")) &
-					(!operator.equals("*")) & (!operator.equals("/")) &
-					(!operator.equals("%")) & (!operator.equals("^"))
+				operator = in.next().charAt(0);
+			} while(operator != '+' & operator != '-' &
+					operator != '*' & operator != '/' &
+					operator != '%' & operator != '^'
 					);
 
 			int number2 = inputNumber("Введите [Второе число]:");
