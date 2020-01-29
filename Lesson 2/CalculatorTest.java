@@ -13,35 +13,35 @@ public class CalculatorTest {
 								"[Первое число]%[Второе число]" + "\n" +
 								"[Первое число]^[Второе число]"  + "\n");
 
-		String doNextCalculation = "да";
+		String calculation = "да";
 		Calculator calc = new Calculator();
 
-		while(doNextCalculation.equals("да")) {
+		do {
 			int number1 = inputNumber("Введите [Первое число]:");
 
-			char operator = 'x';
+			char operator;
 			do {
 				System.out.print("Введите знак математической операции:");
 				operator = in.next().charAt(0);
-			} while(operator != '+' & operator != '-' &
-					operator != '*' & operator != '/' &
-					operator != '%' & operator != '^'
+			} while(operator != '+' && operator != '-' &&
+					operator != '*' && operator != '/' &&
+					operator != '%' && operator != '^'
 					);
 
 			int number2 = inputNumber("Введите [Второе число]:");
 
 			calc.сalculate(number1, operator, number2);
 
-			doNextCalculation = doNext();
-		}
+			calculation = doNext();
+		} while(calculation.equals("да"));
 	}
 
-	public static int inputNumber(String inputString) {
-		int number = -1;
+	public static int inputNumber(String message) {
+		int number;
 		do {
-			System.out.print(inputString);
+			System.out.print(message);
 			while (!in.hasNextInt()) {
-				System.out.print(inputString);
+				System.out.print(message);
 				in.next();
 			}
 			number = in.nextInt();
