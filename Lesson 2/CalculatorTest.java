@@ -29,9 +29,7 @@ public class CalculatorTest {
 					);
 
 			int number2 = inputNumber("Введите [Второе число]:");
-
 			calc.сalculate(number1, operator, number2);
-
 			calculation = doNext();
 		} while(calculation.equals("да"));
 	}
@@ -50,11 +48,11 @@ public class CalculatorTest {
 	}
 
 	public static String doNext() {
-		String inputYesNo = "";
+		String playerAnswer;
 		do {
 			System.out.print("Хотите продолжить? [да/нет]:");
-			inputYesNo = in.next();
-		} while((!inputYesNo.equals("да")) & (!inputYesNo.equals("нет")));
-		return inputYesNo;
+			playerAnswer = in.next();
+		} while((!playerAnswer.equals("да")) & (!playerAnswer.equals("нет")));
+		return playerAnswer;
 	}
 }
