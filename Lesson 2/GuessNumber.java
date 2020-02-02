@@ -2,41 +2,38 @@ import java.util.Scanner;
 
 public class GuessNumber {
 	private static Scanner in = new Scanner(System.in);
-	private Player firstPlayer = new Player();
-	private Player secondPlayer = new Player();
-	int randomNumber = (int) (Math.random() * 101);
+	private Player firstPlayer;
+	private Player secondPlayer;
 
-	public GuessNumber(String firstName, String secondName){
-		this.firstPlayer.setName(firstName);
-		this.secondPlayer.setName(secondName);
+	public GuessNumber(Player firstPlayer, Player secondPlayer){
+		this.firstPlayer = firstPlayer;
+		this.secondPlayer = secondPlayer;
 	}
 
-	public boolean play() {
-		boolean isWinner = false;
-		firstPlayer.setNumber(inputNumber("Первый игрок считает, что число равно:"));
-		secondPlayer.setNumber(inputNumber("Второй игрок считает, что число равно:"));
+	public void play() {
+		int randomNumber = (int) (Math.random() * 101);
+		do {
+			firstPlayer.setNumber(inputNumber(firstPlayer.getName()));
+			secondPlayer.setNumber(inputNumber(secondPlayer.getName()));
 
-		if((firstPlayer.getNumber() == randomNumber) & (secondPlayer.getNumber() == randomNumber)) {
-			System.out.println("Игроки " + firstPlayer.getName() + ", "+ secondPlayer.getName() + " угадали число " + randomNumber);
-			isWinner = true;
-		} else if(firstPlayer.getNumber() == randomNumber) {
-			System.out.println("Игрок " + firstPlayer.getName() + " угадал число " + randomNumber);
-			isWinner = true;
-		} else if(secondPlayer.getNumber() == randomNumber) {
-			System.out.println("Игрок " + secondPlayer.getName() + " угадал число " + randomNumber);
-			isWinner = true;
-		} else {
-			System.out.println("Никто из игроков не угадал");
-		}
-		return isWinner;
+			if((firstPlayer.getNumber() == randomNumber) && (secondPlayer.getNumber() == randomNumber)) {
+				System.out.println("Игроки " + firstPlayer.getName() + ", "+ secondPlayer.getName() + " угадали число " + randomNumber);
+			} else if(firstPlayer.getNumber() == randomNumber) {
+				System.out.println("Игрок " + firstPlayer.getName() + " угадал число " + randomNumber);
+			} else if(secondPlayer.getNumber() == randomNumber) {
+				System.out.println("Игрок " + secondPlayer.getName() + " угадал число " + randomNumber);
+			} else {
+				System.out.println("Никто из игроков не угадал");
+			}
+		} while((firstPlayer.getNumber() != randomNumber) && (secondPlayer.getNumber() != randomNumber));
 	}
 
-	public int inputNumber(String message) {
+	public int inputNumber(String name) {
 		int number;
 		do {
-			System.out.print(message);
+			System.out.print(name + " считает, что число равно:");
 			while (!in.hasNextInt()) {
-				System.out.print(message);
+				System.out.print(name + " считает, что число равно:");
 				in.next();
 			}
 			number = in.nextInt();

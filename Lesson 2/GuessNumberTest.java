@@ -8,19 +8,16 @@ public class GuessNumberTest {
 		System.out.println("Загадано число в диапазоне от 1 до 100" + "\n" +
 							"игроки должны по очереди пытаться его угадать");
 
-		String firstName = inputName("Введите имя первого игрока:");
-		String secondName = inputName("Введите имя второго игрока:");
+		Player firstPlayer =  new Player(inputName("Введите имя первого игрока:"));
+		Player secondPlayer = new Player(inputName("Введите имя второго игрока:"));
 
-		GuessNumber game = new GuessNumber(firstName, secondName);
+		GuessNumber game = new GuessNumber(firstPlayer, secondPlayer);
 
 		String playerAnswer = "да";
-		boolean isWinner = false;
 		do {
-			isWinner = game.play();
-			if(!isWinner) {
-				playerAnswer = doNext();
-			}
-		} while(playerAnswer.equals("да") & !isWinner);
+			game.play();
+			playerAnswer = doNext();
+		} while(playerAnswer.equals("да"));
 	}
 
 	public static String inputName(String message) {
@@ -37,7 +34,7 @@ public class GuessNumberTest {
 		do {
 			System.out.print("Хотите продолжить? [да/нет]:");
 			inputYesNo = in.next();
-		} while((!inputYesNo.equals("да")) & (!inputYesNo.equals("нет")));
+		} while((!inputYesNo.equals("да")) && (!inputYesNo.equals("нет")));
 		return inputYesNo;
 	}
 }

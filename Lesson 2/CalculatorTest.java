@@ -52,7 +52,7 @@ public class CalculatorTest {
 		do {
 			System.out.print("Хотите продолжить? [да/нет]:");
 			playerAnswer = in.next();
-		} while((!playerAnswer.equals("да")) & (!playerAnswer.equals("нет")));
+		} while((!playerAnswer.equals("да")) && (!playerAnswer.equals("нет")));
 		return playerAnswer;
 	}
 }
