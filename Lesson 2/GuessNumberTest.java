@@ -8,23 +8,21 @@ public class GuessNumberTest {
 		System.out.println("Загадано число в диапазоне от 1 до 100" + "\n" +
 							"игроки должны по очереди пытаться его угадать");
 
-		Player firstPlayer =  new Player(inputName("Введите имя первого игрока:"));
+		Player firstPlayer = new Player(inputName("Введите имя первого игрока:"));
 		Player secondPlayer = new Player(inputName("Введите имя второго игрока:"));
 
 		GuessNumber game = new GuessNumber(firstPlayer, secondPlayer);
 
-		String playerAnswer = "да";
 		do {
 			game.play();
-			playerAnswer = doNext();
-		} while(playerAnswer.equals("да"));
+		} while(doNext().equals("да"));
 	}
 
 	public static String inputName(String message) {
 		String name;
 		do {
 			System.out.print(message);
-			name = in.nextLine();
+			name = in.next();
 		} while(name.isEmpty());
 		return name;
 	}
