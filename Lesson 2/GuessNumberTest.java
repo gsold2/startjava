@@ -34,7 +34,7 @@ public class GuessNumberTest {
 		do {
 			System.out.print("Хотите продолжить? [да/нет]:");
 			inputYesNo = in.next();
-		} while((!inputYesNo.equals("да")) && (!inputYesNo.equals("нет")));
+		} while(!inputYesNo.equals("да") && !inputYesNo.equals("нет"));
 		return inputYesNo;
 	}
 }

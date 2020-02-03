@@ -13,7 +13,7 @@ public class CalculatorTest {
 								"[Первое число]%[Второе число]" + "\n" +
 								"[Первое число]^[Второе число]"  + "\n");
 
-		String calculation = "да";
+		String userAnswer = "да";
 		Calculator calc = new Calculator();
 
 		do {
@@ -30,8 +30,8 @@ public class CalculatorTest {
 
 			int number2 = inputNumber("Введите [Второе число]:");
 			calc.сalculate(number1, operator, number2);
-			calculation = doNext();
-		} while(calculation.equals("да"));
+			userAnswer = doNext();
+		} while(userAnswer.equals("да"));
 	}
 
 	public static int inputNumber(String message) {
