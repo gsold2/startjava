@@ -1,3 +1,5 @@
+package com.startjava.lesson_1.unicode;
+
 public class Unicode {
 	public static void main(String[] args) {
 		System.out.println("Вывод на консоль Unicode [33, 126]:");

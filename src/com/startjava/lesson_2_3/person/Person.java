@@ -1,3 +1,5 @@
+package com.startjava.lesson_2_3.person;
+
 public class Person {
 
 	String sex = "Man";
@@ -19,7 +21,7 @@ public class Person {
 	}
 
 	String speak() {
-		return "Я говорю"
+		return "Я говорю";
 	}
 
 	void learnJava() {
