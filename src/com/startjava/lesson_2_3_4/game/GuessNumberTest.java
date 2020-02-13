@@ -7,7 +7,7 @@ public class GuessNumberTest {
 
     public static void main(String[] args) {
         //TODO: Игроки должны угадать число
-        System.out.print("У вас 3 попыток");
+        System.out.print("У вас 10 попыток");
         System.out.println("Загадано число в диапазоне от 1 до 100" + "\n" +
                 "игроки должны по очереди пытаться его угадать");
 
