@@ -1,4 +1,4 @@
-package com.startjava.lesson_2_3.calculator;
+package com.startjava.lesson_2_3_4.calculator;
 
 import java.util.Scanner;
 
@@ -7,52 +7,56 @@ public class CalculatorTest {
 
 	public static void main(String[] args) {
 		System.out.println("Возможные типы математических операций " +
-								"с целыми положительными числами:" + "\n" +
-								"[Первое число]+[Второе число]" + "\n" +
-								"[Первое число]-[Второе число]" + "\n" +
-								"[Первое число]*[Второе число]" + "\n" +
-								"[Первое число]/[Второе число]" + "\n" +
-								"[Первое число]%[Второе число]" + "\n" +
-								"[Первое число]^[Второе число]"  + "\n");
+				"с целыми положительными числами:" + "\n" +
+				"[Первое число] + [Второе число]" + "\n" +
+				"[Первое число] - [Второе число]" + "\n" +
+				"[Первое число] * [Второе число]" + "\n" +
+				"[Первое число] / [Второе число]" + "\n" +
+				"[Первое число] % [Второе число]" + "\n" +
+				"[Первое число] ^ [Второе число]" + "\n");
 
 		Calculator calc = new Calculator();
+		String inputExpression;
+		String[] membersMathematicalExpression;
+		int number1;
+		int number2;
+		String operator;
 
 		do {
-			int number1 = inputNumber("Введите [Первое число]:");
+			System.out.print("Введите математическое выражение:");
+			inputExpression = in.nextLine();
+			membersMathematicalExpression = inputExpression.split(" ");
+			if (isIntegerGreaterThanZero(membersMathematicalExpression[0]) && isIntegerGreaterThanZero(membersMathematicalExpression[2])) {
+				number1 = Integer.parseInt(membersMathematicalExpression[0]);
+				operator = membersMathematicalExpression[1];
+				number2 = Integer.parseInt(membersMathematicalExpression[2]);
 
-			char operator;
-			do {
-				System.out.print("Введите знак математической операции:");
-				operator = in.next().charAt(0);
-			} while(operator != '+' && operator != '-' &&
-					operator != '*' && operator != '/' &&
-					operator != '%' && operator != '^'
-					);
-
-			int number2 = inputNumber("Введите [Второе число]:");
-			calc.сalculate(number1, operator, number2);
-		} while(doNext().equals("да"));
+				calc.сalculate(number1, operator, number2);
+			}
+		} while (doNext().equals("да"));
 	}
 
-	public static int inputNumber(String message) {
-		int number;
-		do {
-			System.out.print(message);
-			while (!in.hasNextInt()) {
-				System.out.print(message);
-				in.next();
+	public static boolean isIntegerGreaterThanZero(String str) {
+		try {
+			Integer.parseInt(str);
+			if (Integer.parseInt(str) > 0) {
+				return true;
+			} else {
+				System.out.println("Необходимо водить целое число больше 0 -> " + str);
+				return false;
 			}
-			number = in.nextInt();
-		} while (number <= 0);
-		return number;
+		} catch (Exception e) {
+			System.out.println("Необходимо водить целое число больше 0 -> " + str);
+			return false;
+		}
 	}
 
 	public static String doNext() {
 		String playerAnswer;
 		do {
 			System.out.print("Хотите продолжить? [да/нет]:");
-			playerAnswer = in.next();
-		} while(!playerAnswer.equals("да") && !playerAnswer.equals("нет"));
+			playerAnswer = in.nextLine();
+		} while (!playerAnswer.equals("да") && !playerAnswer.equals("нет"));
 		return playerAnswer;
 	}
 }
