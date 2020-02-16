@@ -16,7 +16,6 @@ public class CalculatorTest {
                 "[a] ^ [b]" + "\n");
 
         Calculator calc = new Calculator();
-        //String inputExpression;
         String[] srcMathExpression;
         int number1;
         int number2;
