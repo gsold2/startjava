@@ -4,8 +4,7 @@ import java.util.Arrays;
 
 public class Player {
     private String name;
-    private int lastNumber;
-    private int[] numberArray = new int[10];
+    private int[] numbers = new int[10];
 
     public Player(String name) {
         this.name = name;
@@ -15,20 +14,19 @@ public class Player {
         return name;
     }
 
-    public int lastNumber() {
-        return lastNumber;
+    public int[] getNumbers() {
+        return numbers;
     }
 
-    public int[] getNumberArray() {
-        return numberArray;
+    public void setNumbers(int number, int count) {
+        this.numbers[count] = number;
     }
 
-    public void setNumberArray(int number, int count) {
-        this.lastNumber = number;
-        this.numberArray[count] = number;
+    public int getNumber(int count) {
+        return numbers[count];
     }
 
-    public void setNumberArrayZero(int count) {
-        Arrays.fill(this.numberArray, 0, count, 0);
+    public void clearNumbers(int count) {
+        Arrays.fill(this.numbers, 0, count, 0);
     }
 }

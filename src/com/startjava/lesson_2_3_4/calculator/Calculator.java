@@ -2,31 +2,22 @@ package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
 
-    public static String сalculate(int number1, String operator, int number2) {
-        String calculationResult;
+    public static Double calculate(int number1, String operator, int number2) {
         switch (operator) {
             case "+":
-                calculationResult = Integer.toString(Math.addExact(number1, number2));
-                break;
+                return (double) Math.addExact(number1, number2);
             case "-":
-                calculationResult = Integer.toString(Math.subtractExact(number1, number2));
-                break;
+                return (double) Math.subtractExact(number1, number2);
             case "*":
-                calculationResult = Integer.toString(Math.multiplyExact(number1, number2));
-                break;
+                return (double) Math.multiplyExact(number1, number2);
             case "/":
-                calculationResult = Double.toString(Double.valueOf(number1) / Double.valueOf(number2));
-                break;
+                return ((double) number1 / (double) number2);
             case "%":
-                calculationResult = Double.toString(Double.valueOf(number1) % Double.valueOf(number2));
-                break;
+                return ((double) number1 % (double) number2);
             case "^":
-                calculationResult = Double.toString(Math.pow(number1, number2));
-                break;
+                return Math.pow(number1, number2);
             default:
-                calculationResult = "Неверно введен символ математической операции";
-                break;
+                return null;
         }
-        return calculationResult;
     }
 }

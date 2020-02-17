@@ -29,7 +29,11 @@ public class CalculatorTest {
                 operator = srcMathExpression[1];
                 number2 = Integer.parseInt(srcMathExpression[2]);
 
-                System.out.println(calc.сalculate(number1, operator, number2));
+                if(calc.calculate(number1, operator, number2) != null) {
+                    System.out.println(calc.calculate(number1, operator, number2));
+                } else {
+                    System.out.println("Неправильно введен математический оператор");
+                }
             }
         } while (doNext().equals("да"));
     }
@@ -43,7 +47,7 @@ public class CalculatorTest {
                 throw new NumberFormatException();
             }
         } catch (NumberFormatException exc) {
-            System.out.println("Необходимо водить целое число больше 0 -> " + str);
+            System.out.println("Ошибка при вводе данных");
             return false;
         }
     }
