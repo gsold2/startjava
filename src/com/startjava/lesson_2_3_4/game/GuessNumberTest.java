@@ -21,7 +21,7 @@ public class GuessNumberTest {
         } while (doNext().equals("да"));
     }
 
-    public static String inputName(String message) {
+    private static String inputName(String message) {
         String name;
         do {
             System.out.print(message);
@@ -30,7 +30,7 @@ public class GuessNumberTest {
         return name;
     }
 
-    public static String doNext() {
+    private static String doNext() {
         String inputYesNo;
         do {
             System.out.print("Хотите продолжить? [да/нет]:");
