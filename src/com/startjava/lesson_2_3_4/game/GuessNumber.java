@@ -15,32 +15,39 @@ public class GuessNumber {
 
     public void play() {
         int randomNumber = (int) (Math.random() * 101);
-        int count = 0;
-        do {
-            firstPlayer.setNumbers(inputNumber(firstPlayer.getName()), count);
-            secondPlayer.setNumbers(inputNumber(secondPlayer.getName()), count);
+        int attempts = 0;
+        String firstPlayerName = firstPlayer.getName();
+        String secondPlayerName = secondPlayer.getName();
+        int firstInputNubmer;
+        int secondInputNubmer;
 
-            if (firstPlayer.getNumber(count) == randomNumber) {
-                System.out.println("Игрок " + firstPlayer.getName() + " угадал число " + randomNumber + " с " + (count + 1) + " попытки");
+        do {
+            firstInputNubmer = inputNumber(firstPlayerName);
+            secondInputNubmer = inputNumber(secondPlayerName);
+
+            firstPlayer.setNumber(firstInputNubmer, attempts);
+            secondPlayer.setNumber(secondInputNubmer, attempts);
+
+            if (firstPlayer.getNumber() == randomNumber) {
+                firstPlayer.printNumbers();
+                System.out.println("Игрок " + firstPlayer.getName() + " угадал число " + randomNumber + " с " + (attempts + 1) + " попытки");
                 break;
-            } else if (secondPlayer.getNumber(count) == randomNumber) {
-                System.out.println("Игрок " + secondPlayer.getName() + " угадал число " + randomNumber + " с " + (count + 1) + " попытки");
+            } else if (secondPlayer.getNumber() == randomNumber) {
+                secondPlayer.printNumbers();
+                System.out.println("Игрок " + secondPlayer.getName() + " угадал число " + randomNumber + " с " + (attempts + 1) + " попытки");
                 break;
             }
-            count = count + 1;
-        } while (count < 10);
+            attempts = attempts + 1;
+        } while (attempts < 10);
 
-        if (count == 10) {
-            printNumbers(firstPlayer, count);
+        if (attempts == 10) {
+            firstPlayer.printNumbers();
             System.out.println("У игрока " + firstPlayer.getName() + " закончились попытки");
-            printNumbers(secondPlayer, count);
+            secondPlayer.printNumbers();
             System.out.println("У игрока " + secondPlayer.getName() + " закончились попытки");
-            firstPlayer.clearNumbers(count);
-            secondPlayer.clearNumbers(count);
-        } else {
-            firstPlayer.clearNumbers((count + 1));
-            secondPlayer.clearNumbers((count + 1));
         }
+        firstPlayer.clearNumbers();
+        secondPlayer.clearNumbers();
     }
 
     public int inputNumber(String name) {
@@ -54,14 +61,5 @@ public class GuessNumber {
             number = in.nextInt();
         } while (number < 0);
         return number;
-    }
-
-    public void printNumbers(Player player, int count) {
-        int[] guessNumberArray = Arrays.copyOf(player.getNumbers(), count);
-        System.out.print("Игрок " + player.getName() + " назвал ");
-        for (int guessNumber : guessNumberArray) {
-            System.out.print(guessNumber + " ");
-        }
-        System.out.print("\n");
     }
 }

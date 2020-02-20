@@ -28,12 +28,7 @@ public class CalculatorTest {
                 number1 = Integer.parseInt(srcMathExpression[0]);
                 operator = srcMathExpression[1];
                 number2 = Integer.parseInt(srcMathExpression[2]);
-
-                if(calc.calculate(number1, operator, number2) != null) {
-                    System.out.println(calc.calculate(number1, operator, number2));
-                } else {
-                    System.out.println("Неправильно введен математический оператор");
-                }
+                System.out.println(calc.calculate(number1, operator, number2));
             }
         } while (doNext().equals("да"));
     }
