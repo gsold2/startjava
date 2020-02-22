@@ -1,9 +1,11 @@
 package com.startjava.lesson_2_3_4.game;
 
+import java.util.Arrays;
+
 public class Player {
     private String name;
     private int[] numbers = new int[10];
-    private int index;
+    private int index = -1;
 
     public Player(String name) {
         this.name = name;
@@ -13,30 +15,22 @@ public class Player {
         return name;
     }
 
-    public void setNumber(int number, int index) {
+    public void setNumber(int number) {
+        index++;
         this.numbers[index] = number;
-        this.index = index;
     }
 
-    public int getNumber() {
+    public int getLastNumber() {
         return numbers[index];
     }
 
     public void clearNumbers() {
-        int count = 0;
-        do {
-            numbers[count] = 0;
-            count++;
-        } while (count <= index);
-     }
+        Arrays.fill(numbers, 0, (index + 1), 0);
+        index = -1;
+    }
 
-    public void printNumbers() {
-        int count = 0;
-        System.out.print("Игрок " + name + " назвал ");
-        do {
-            System.out.print(numbers[count] + " ");
-            count++;
-        } while (count <= index);
-        System.out.print("\n");
+    public int[] enteredNumbers() {
+        int[] numbers = Arrays.copyOf(this.numbers, (index + 1));
+        return numbers;
     }
 }

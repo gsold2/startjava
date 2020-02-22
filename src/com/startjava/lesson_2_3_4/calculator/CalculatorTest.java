@@ -24,25 +24,37 @@ public class CalculatorTest {
         do {
             System.out.print("Введите математическое выражение:");
             srcMathExpression = in.nextLine().split(" ");
-            if (isNumberNotZero(srcMathExpression[0]) && isNumberNotZero(srcMathExpression[2])) {
-                number1 = Integer.parseInt(srcMathExpression[0]);
-                operator = srcMathExpression[1];
-                number2 = Integer.parseInt(srcMathExpression[2]);
-                System.out.println(calc.calculate(number1, operator, number2));
+            if (srcMathExpression.length == 3) {
+                if (isNumberNotZero(srcMathExpression[0], srcMathExpression[2])) {
+                    number1 = Integer.parseInt(srcMathExpression[0]);
+                    operator = srcMathExpression[1];
+                    number2 = Integer.parseInt(srcMathExpression[2]);
+                    System.out.println(calc.calculate(number1, operator, number2));
+                }
+            } else {
+                System.out.println("Ошибка при вводе данных");
             }
         } while (doNext().equals("да"));
     }
 
-    private static boolean isNumberNotZero(String str) {
+    private static boolean isNumberNotZero(String... str) {
+        int numbersCorrect = 0;
         try {
-            Integer.parseInt(str);
-            if (Integer.parseInt(str) > 0) {
-                return true;
-            } else {
-                throw new NumberFormatException();
+            for (int i = 0; i < str.length; i++) {
+                Integer.parseInt(str[i]);
+                if (Integer.parseInt(str[i]) > 0) {
+                    numbersCorrect++;
+                } else {
+                    throw new NumberFormatException();
+                }
             }
         } catch (NumberFormatException exc) {
             System.out.println("Ошибка при вводе данных");
+        }
+
+        if (numbersCorrect == str.length) {
+            return true;
+        } else {
             return false;
         }
     }
